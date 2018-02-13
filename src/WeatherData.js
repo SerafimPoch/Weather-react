@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import { buildRequestUrl, getCurrentLocation, extractPosition } from "./Geo";
 
 class Weather extends Component {
@@ -23,7 +22,7 @@ class Weather extends Component {
       this.setState({
         city: data.city.name,
         temp: data.list[0].main.temp,
-        icon: data.list[0].weather[0].id
+        icon: data.list[0].weather[0].icon
       });
     } else {
       alert("No internet connection");
@@ -32,7 +31,7 @@ class Weather extends Component {
 
   render() {
     const icon = this.state.icon;
-    console.log(this.props.store);
+    console.log(icon);
     return (
       <div>
         <header>
@@ -51,10 +50,13 @@ class Weather extends Component {
                 <button className="farenheit">F</button>
               </div>
             </div>
-            <div className="image" />
-            {this.props.store.map(x => {
-              return <img key={x.id} src={x[800]} className="img" />;
-            })}
+            <div>
+              <img
+                src={`http://openweathermap.org/img/w/${icon}.png`}
+                className="image"
+                alt="weather-image"
+              />
+            </div>
           </div>
         </main>
         <footer>
