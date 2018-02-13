@@ -22,7 +22,7 @@ body {
   flex-flow: column wrap;
   align-items: center;
   justify-content: space-between;
-  height: 150px;
+  height: 450px;
 }
 
 .tempConvertContainer {
@@ -52,4 +52,9 @@ body {
   align-items: center;
   text-align: center;
   margin-top: 300px;
+}
+
+.img {
+  width: 100px;
+  height: 100px;
 }

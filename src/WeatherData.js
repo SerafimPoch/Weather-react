@@ -31,7 +31,8 @@ class Weather extends Component {
   }
 
   render() {
-    console.log();
+    const icon = this.state.icon;
+    console.log(this.props.store);
     return (
       <div>
         <header>
@@ -52,7 +53,7 @@ class Weather extends Component {
             </div>
             <div className="image" />
             {this.props.store.map(x => {
-              return <img src={this.state.icon} />;
+              return <img key={x.id} src={x[800]} className="img" />;
             })}
           </div>
         </main>
