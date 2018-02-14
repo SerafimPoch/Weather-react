@@ -1,16 +1,29 @@
 import React, { Component } from "react";
 import { buildRequestUrl, getCurrentLocation, extractPosition } from "./Geo";
+import { Faren, Celc } from "./Buttons";
 
 class Weather extends Component {
   constructor(props) {
     super(props);
     this.state = {
       city: "",
-      temp: 0,
-      icon: null
+      temp: true,
+      icon: null,
+      checker: false
     };
   }
 
+  CelcConvert(e) {
+    this.setState({
+      checker: true
+    });
+  }
+
+  FarenConvert(e) {
+    this.setState({
+      checker: false
+    });
+  }
   async componentDidMount() {
     if (navigator.geolocation) {
       const position = await getCurrentLocation();
@@ -18,7 +31,6 @@ class Weather extends Component {
       const data = await fetch(buildRequestUrl(lat, lon)).then(resp =>
         resp.json()
       );
-      console.log(data);
       this.setState({
         city: data.city.name,
         temp: data.list[0].main.temp,
@@ -31,7 +43,14 @@ class Weather extends Component {
 
   render() {
     const icon = this.state.icon;
-    console.log(icon);
+    const temp = this.state.temp;
+    const city = this.state.city;
+    let dropdown;
+    if (this.state.checker) {
+      dropdown = Celc(this.state.temp);
+    } else {
+      dropdown = Faren(this.state.temp);
+    }
     return (
       <div>
         <header>
@@ -42,12 +61,22 @@ class Weather extends Component {
 
         <main>
           <div className="mainContainer">
-            <div className="location">{this.state.city}</div>
+            <div className="location">{city}</div>
             <div className="tempConvertContainer">
-              <div className="temperature">{this.state.temp}</div>
+              <div className="temperature">{dropdown}</div>
               <div>
-                <button className="celcium">C</button>
-                <button className="farenheit">F</button>
+                <button
+                  className="celcium"
+                  onClick={this.CelcConvert.bind(this)}
+                >
+                  C
+                </button>
+                <button
+                  className="farenheit"
+                  onClick={this.FarenConvert.bind(this)}
+                >
+                  F
+                </button>
               </div>
             </div>
             <div>

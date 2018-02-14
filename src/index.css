@@ -22,7 +22,7 @@ body {
   flex-flow: column wrap;
   align-items: center;
   justify-content: space-between;
-  height: 450px;
+  height: 300px;
 }
 
 .tempConvertContainer {
@@ -55,6 +55,16 @@ body {
 }
 
 .image {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
+}
+
+.location {
+  font-size: 25px;
+  font-family: "Acme", sans-serif;
+}
+
+.temperature {
+  font-size: 20px;
+  font-family: "Acme", sans-serif;
 }
