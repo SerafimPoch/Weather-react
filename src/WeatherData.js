@@ -11,15 +11,17 @@ class Weather extends Component {
       icon: null,
       checker: false
     };
+    this.CelcConvert = this.CelcConvert.bind(this);
+    this.FarenConvert = this.FarenConvert.bind(this);
   }
 
-  CelcConvert(e) {
+  CelcConvert() {
     this.setState({
       checker: true
     });
   }
 
-  FarenConvert(e) {
+  FarenConvert() {
     this.setState({
       checker: false
     });
@@ -47,9 +49,9 @@ class Weather extends Component {
     const city = this.state.city;
     let dropdown;
     if (this.state.checker) {
-      dropdown = Celc(this.state.temp);
+      dropdown = <p>{Celc(temp)} &ordm;C</p>;
     } else {
-      dropdown = Faren(this.state.temp);
+      dropdown = <p>{Faren(temp)} &ordm;F</p>;
     }
     return (
       <div>
@@ -65,16 +67,10 @@ class Weather extends Component {
             <div className="tempConvertContainer">
               <div className="temperature">{dropdown}</div>
               <div>
-                <button
-                  className="celcium"
-                  onClick={this.CelcConvert.bind(this)}
-                >
+                <button className="celcium" onClick={this.CelcConvert}>
                   C
                 </button>
-                <button
-                  className="farenheit"
-                  onClick={this.FarenConvert.bind(this)}
-                >
+                <button className="farenheit" onClick={this.FarenConvert}>
                   F
                 </button>
               </div>
@@ -83,7 +79,7 @@ class Weather extends Component {
               <img
                 src={`http://openweathermap.org/img/w/${icon}.png`}
                 className="image"
-                alt="weather-image"
+                alt=""
               />
             </div>
           </div>
