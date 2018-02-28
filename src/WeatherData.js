@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { buildRequestUrl, getCurrentLocation, extractPosition } from "./Geo";
 import { Faren, Celc } from "./Buttons";
+import { Header } from "./Header";
+import { Footer } from "./Footer";
 
 class Weather extends Component {
   constructor(props) {
@@ -8,7 +10,7 @@ class Weather extends Component {
     this.state = {
       city: "",
       temp: true,
-      icon: null,
+      icon: "",
       checker: false
     };
     this.CelcConvert = this.CelcConvert.bind(this);
@@ -48,19 +50,13 @@ class Weather extends Component {
     const temp = this.state.temp;
     const city = this.state.city;
     let dropdown;
-    if (this.state.checker) {
-      dropdown = <p>{Celc(temp)} &ordm;C</p>;
-    } else {
-      dropdown = <p>{Faren(temp)} &ordm;F</p>;
-    }
+    this.state.checker
+      ? (dropdown = <p>{Celc(temp)} &ordm;C</p>)
+      : (dropdown = <p>{Faren(temp)} &ordm;F</p>);
+
     return (
       <div>
-        <header>
-          <div className="headerContainer">
-            <p className="headerText">Forest Weather</p>
-          </div>
-        </header>
-
+        <Header />
         <main>
           <div className="mainContainer">
             <div className="location">{city}</div>
@@ -84,22 +80,7 @@ class Weather extends Component {
             </div>
           </div>
         </main>
-        <footer>
-          <div className="footerContainer">
-            <div>
-              <figure>
-                <a href="https://github.com/SerafimPoch">
-                  <img
-                    src="https://octodex.github.com/images/dojocat.jpg"
-                    alt="my github account"
-                    className="github"
-                  />
-                </a>
-                <figcaption>My GitHub</figcaption>
-              </figure>
-            </div>
-          </div>
-        </footer>
+        <Footer />
       </div>
     );
   }
