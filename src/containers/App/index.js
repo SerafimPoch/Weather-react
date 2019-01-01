@@ -5,7 +5,7 @@ import { mapDispatchToProps } from "./appContainer";
 
 class App extends Component {
   componentDidMount() {
-    this.props.getWeatherData();
+    console.log(this.props.getWeatherData());
   }
 
   render() {
