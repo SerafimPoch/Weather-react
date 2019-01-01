@@ -1,5 +1,10 @@
 import React from "react";
+import { Container } from "./style";
 
 export default () => {
-  return <p>App</p>;
+  return (
+    <Container>
+      <p>App</p>
+    </Container>
+  );
 };
