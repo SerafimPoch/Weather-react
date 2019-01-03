@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Container } from "./style";
 import { mapDispatchToProps } from "./appContainer";
+import WeatherCards from "../WeatherCards";
 
 class App extends Component {
   componentDidMount() {
@@ -11,7 +12,7 @@ class App extends Component {
   render() {
     return (
       <Container>
-        <p>App</p>
+        <WeatherCards />
       </Container>
     );
   }
