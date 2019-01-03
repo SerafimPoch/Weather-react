@@ -2,10 +2,12 @@ import React from "react";
 import Content from "../../components/search";
 import { reduxForm } from "redux-form";
 import { FormContainer } from "./style";
+import { connect } from "react-redux";
+import { mapDispatchToProps } from "./searchContainer";
 
-let Search = ({ handleSubmit }) => {
+let Search = ({ handleSubmit, getWeatherData }) => {
   const test = ({ city }) => {
-    console.log(city);
+    return getWeatherData(city);
   };
   return (
     <FormContainer onSubmit={handleSubmit(test)}>
@@ -18,4 +20,7 @@ Search = reduxForm({
   form: "search"
 })(Search);
 
-export default Search;
+export default connect(
+  null,
+  mapDispatchToProps
+)(Search);

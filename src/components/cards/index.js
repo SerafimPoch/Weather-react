@@ -11,7 +11,7 @@ export default ({ store }) => {
   return (
     <Container>
       <MainCardContainer>
-        <MainCard store={store.days[1]} />
+        <MainCard store={store} />
       </MainCardContainer>
       <OthersCardsContainer>
         <SecondCard store={store.days[2]} />
