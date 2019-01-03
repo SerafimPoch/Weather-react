@@ -3,15 +3,17 @@ import { connect } from "react-redux";
 import { Container } from "./style";
 import { mapDispatchToProps } from "./appContainer";
 import WeatherCards from "../WeatherCards";
+import Search from "../Search";
 
 class App extends Component {
   componentDidMount() {
-    console.log(this.props.getWeatherData());
+    this.props.getWeatherData();
   }
 
   render() {
     return (
       <Container>
+        <Search />
         <WeatherCards />
       </Container>
     );

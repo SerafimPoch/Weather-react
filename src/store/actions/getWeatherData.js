@@ -17,9 +17,9 @@ const getWeatherDataFailure = error => ({
   payload: error
 });
 
-export const getWeatherData = () => async dispatch => {
+export const getWeatherData = city => async dispatch => {
   dispatch(getWeatherDataStart());
-  return await weatherApi()
+  return await weatherApi(city)
     .then(data => dispatch(getWeatherDataSuccess(data)))
     .catch(error => dispatch(getWeatherDataFailure(error)));
 };
