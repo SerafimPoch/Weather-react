@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { CardContainer } from "./style";
 
 export default ({ store }) => {
